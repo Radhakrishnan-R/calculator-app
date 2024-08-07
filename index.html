@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator App</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="output">
+            <input type="text" id="display" autocomplete="off" spellcheck="false">
+        </div>
+        
+        <div class="rows">
+            <input type="button" value="AC" id="clear" onclick="display.value = ''; btnClicked = ''; "/>
+            <input type="button" value="DE" id="delete" onclick="display.value =  display.value.toString().slice(0, -1);"/>
+            <input type="button" value="." class="value"/>
+            <input type="button" value="/" class="value"/>
+        </div>
+        <div class="rows">
+            <input type="button" value="7" class="value"/>
+            <input type="button" value="8" class="value"/>
+            <input type="button" value="9" class="value"/>
+            <input type="button" value="*" class="value"/>
+        </div>
+        <div class="rows">
+            <input type="button" value="4" class="value"/>
+            <input type="button" value="5" class="value"/>
+            <input type="button" value="6" class="value"/>
+            <input type="button" value="-" class="value"/>
+        </div>
+        <div class="rows">
+            <input type="button" value="1" class="value"/>
+            <input type="button" value="2" class="value"/>
+            <input type="button" value="3" class="value"/>
+            <input type="button" value="+" class="value"/>
+        </div>
+        <div class="rows">
+            <input type="button" value="00" class="value"/>
+            <input type="button" value="0" class="value"/>
+            <input type="button" value="=" id="equal" onclick="calc()" />
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        
+        const display = document.querySelector("#display");
+        let btnClicked = "";
+
+        document.querySelectorAll(".value").forEach((button) => {
+            button.addEventListener("click", (e) => {
+                btnClicked +=  e.target.value;
+                display.value = btnClicked;
+            });
+        })
+
+        function calc(){
+            btnClicked = "";
+            console.log(eval(display.value));
+            display.value = eval(display.value);
+            
+        }
+    </script>
+</body>
+</html>
